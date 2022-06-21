@@ -1,15 +1,9 @@
 
-
-from getpass import getpass
-from mysql.connector import connect, Error
-
-try:
-    with connect(
-        host="kalmyk3j.beget.tech",
-        user=input("kalmyk3j_realtm"),
-        password=getpass("244timedb_"),
-    ) as connection:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM `realtime`")
-except Error as e:
-    print(e)
+import mysql.connector 
+cnx = mysql.connector.connect(user='kalmyk3j_realtm', 
+password='244timedb_', host='kalmyk3j.beget.tech', 
+database='kalmyk3j_realtm')
+mycursor = cnx.cursor()
+mycursor.execute("SELECT * FROM `realtime`")
+for x in mycursor:
+  print(x)
